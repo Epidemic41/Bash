@@ -1,0 +1,94 @@
+#!/bin/bash
+#game where user guesses a number between 1 and 25
+#Enjoy the commentary
+#
+#random number is created and stored
+#
+#only do this if you hate the user
+#WinNum=$(( x=(2**63)-1));
+#
+WinNum=$(( ( $RANDOM % 10 ) + 1 ))
+#
+#
+#user is prompted for number between 1 and 10, number is stored
+echo " "
+echo " "
+echo "==============================="
+echo "The Snapshot chronicles"
+echo "==============================="
+echo " "
+echo "-------------------------------"
+echo "for Timmy"
+echo "-------------------------------"
+echo "Director's note: turn on sound"
+echo "-------------------------------"
+echo " "
+read -p "Guess an integer between 1 and 10. Dont be a jerk, Enter in numerical form: " UserGuess
+#
+#enter game mode
+while true
+do
+#
+#Compare the guss to the wining number, if matches congratulate the user
+	if (($UserGuess == $WinNum)); then
+		echo "Congrats! You won at a game that measures a useless skill. You have 10 seconds before this script self distructs"
+		sleep 7
+		printf '\e[?5h'
+		echo " "
+		echo "BOOOOOOM!"
+		echo " "
+		tput bel
+		sleep 1
+		speaker -test -c 6 -t wav -l1
+		echo " "
+		sleep 1
+		printf '\e[?5l'
+		echo "!@#$%^&*!"
+		echo " "
+		sleep 1
+		printf '\e[?5h'
+		tput bel
+		sleep 1
+		speaker -test -c 6 -t wav -l1
+		echo " "
+		echo "KABLOOOM!"
+		echo " "
+		sleep 4
+		printf '\e[?5h'
+		echo "Oh no!  I didn't make any snap shots!"
+		echo " "
+		sleep 4
+		echo "WHY ME?!? GOD PLEASE SAVE MY VM!!!!!"
+		echo " "
+		sleep 4
+		echo "**tearfully embraces fragments of laptop**"
+		echo " "
+		sleep 4
+		echo "TIMMY TIMMY SPEAK TO ME! I NEVER MEANT FOR THIS TO HAPPEN. PLEASE FORGIVE ME!"
+		sleep 4
+		echo " "
+		echo "**dying computer beeping sounds**"
+		sleep 4
+		echo "CURSE YOU GOD! I WILL GET MY REVENGE"
+		echo " "
+		echo " "
+		echo "fades to black"
+		printf '\e[?5l'
+		sleep 5
+		exit
+	fi
+#
+#
+#if guess is less than the winning number, insult them
+	if (($UserGuess < $WinNum)); then 
+		echo "You call that a number? Nice try loser. Get bigger numbers scrub"
+		read -p "Guess again. Maybe try this time. just a thought. : " UserGuess
+	fi
+#
+#
+#if guess is more than the stored number, insult them
+	if (($UserGuess > $WinNum)); then 
+		echo "Woah get a load of this guy, he thinks he's SO COOL with his big number. Stop being inconvient and try a lower number"
+		read -p "guess again, watch your ego this time: " UserGuess
+	fi
+done
